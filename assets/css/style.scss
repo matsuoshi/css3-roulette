@@ -1,0 +1,144 @@
+$boxWidth: 500px;
+$fontSize: 60px;
+$perspective: 700;
+
+
+// vendor prefix
+@mixin vendor($property, $value) {
+	@each $prefix in '-webkit-', '-moz-', '-ms-', '-o-', '' {
+		#{$prefix}#{$property}: $value;
+	}
+}
+
+
+h1 {
+	text-align: center;
+}
+
+#box {
+	width: $boxWidth;
+	height: $boxWidth;
+	@include vendor(perspective, $perspective);
+	margin: 50px auto;
+	overflow: hidden;
+	background-color: #fff;
+
+	#boxWrap {
+		@include vendor(transform-style, preserve-3d);
+
+		ul {
+			position: relative;
+			width: $boxWidth;
+			height: $boxWidth;
+			padding: 0;
+			margin: 0;
+			display: none;
+			@include vendor(transform-style, preserve-3d);
+
+			li {
+				position: absolute;
+				top: 50%;
+				left: 10%;
+				width: 80%;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				font-size: $fontSize;
+				font-weight: bold;
+				text-align: center;
+				color: #333;
+				background-color: #eee;
+				border: 1px solid #ccc;
+				border-radius: $fontSize*2;
+
+				@include vendor(backface-visibility, hidden);
+			}
+		}
+	}
+
+	// animation
+	&.reverseList {
+		// 最初の逆回転
+		ul {
+			@include vendor(animation, reverseList 4s cubic-bezier(1, 0.6, 0.4, 1) 0s 1 normal both);
+		}
+	}
+	&.resetWrap {
+		#boxWrap {
+			@include vendor(animation, rotateList 1s linear 1s 1 normal both);
+		}
+	}
+
+	&.anm1 {
+		// ふつう系
+		ul {
+			@include vendor(animation, rotateList 10s cubic-bezier(0, 1, 0.75, 1.02) 0s 1 normal both);
+		}
+	}
+	&.anm2 {
+		// 進む系
+		ul {
+			@include vendor(animation, rotateList2 10s cubic-bezier(0, 1, 0.75, 1) 0s 1 normal both);
+		}
+	}
+	&.anm3 {
+		// ちょっと行って戻る系
+		ul {
+			@include vendor(animation, rotateList 10s cubic-bezier(0.000, 1, 0.5, 1.04) 0s 1 normal both);
+		}
+	}
+	&.anm4 {
+		// 戻る系
+		ul {
+			@include vendor(animation, rotateList 10s cubic-bezier(0.000, 1, 0.870, 1.100) 0s 1 normal both);
+		}
+	}
+
+	// 終了
+	#boxWrap ul li:first-child {
+		@include vendor(transition, all 0.4s cubic-bezier(1, 4, 0.6, 0.6));
+	}
+	&.finish {
+		#boxWrap ul li:first-child {
+			color: #ff0000;
+			background-color: #ffaa00;
+			border-color: #ffcc88;
+			-webkit-transform: scale(2) !important;
+		}
+	}
+}
+
+$longDegree: 4320;
+@-webkit-keyframes reverseList {
+	from {
+		width: 150%;
+		-webkit-perspective: $perspective / 1.5;
+		-webkit-transform: rotateX(#{$longDegree - 720}deg);
+	}
+	to   {
+		width: 100%;
+		-webkit-perspective: $perspective;
+		-webkit-transform: rotateX(#{$longDegree}deg);
+	}
+}
+
+@-webkit-keyframes rotateList {
+	from {
+		-webkit-transform: rotateX(#{$longDegree}deg) scale(1.1);
+	}
+	to   {
+		-webkit-transform: rotateX(0deg) scale(0.89);
+	}
+}
+@-webkit-keyframes rotateList2 {
+	0%   {
+		-webkit-transform: rotateX(#{$longDegree}deg) scale(1);
+	}
+	92%  {
+		-webkit-transform: rotateX(40deg) scale(0.89);
+		@include vendor(animation-timing-function, ease-in);
+	}
+	100% {
+		-webkit-transform: rotateX(0deg) scale(0.89);
+	}
+}

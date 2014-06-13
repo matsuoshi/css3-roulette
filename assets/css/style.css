@@ -1,0 +1,24 @@
+h1 { text-align: center; }
+
+#box { width: 500px; height: 500px; -webkit-perspective: 700; -moz-perspective: 700; -ms-perspective: 700; -o-perspective: 700; perspective: 700; margin: 50px auto; overflow: hidden; background-color: #fff; }
+#box #boxWrap { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -ms-transform-style: preserve-3d; -o-transform-style: preserve-3d; transform-style: preserve-3d; }
+#box #boxWrap ul { position: relative; width: 500px; height: 500px; padding: 0; margin: 0; display: none; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -ms-transform-style: preserve-3d; -o-transform-style: preserve-3d; transform-style: preserve-3d; }
+#box #boxWrap ul li { position: absolute; top: 50%; left: 10%; width: 80%; padding: 0; margin: 0; list-style: none; font-size: 60px; font-weight: bold; text-align: center; color: #333; background-color: #eee; border: 1px solid #ccc; border-radius: 120px; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; -o-backface-visibility: hidden; backface-visibility: hidden; }
+#box.reverseList ul { -webkit-animation: reverseList 4s cubic-bezier(1, 0.6, 0.4, 1) 0s 1 normal both; -moz-animation: reverseList 4s cubic-bezier(1, 0.6, 0.4, 1) 0s 1 normal both; -ms-animation: reverseList 4s cubic-bezier(1, 0.6, 0.4, 1) 0s 1 normal both; -o-animation: reverseList 4s cubic-bezier(1, 0.6, 0.4, 1) 0s 1 normal both; animation: reverseList 4s cubic-bezier(1, 0.6, 0.4, 1) 0s 1 normal both; }
+#box.resetWrap #boxWrap { -webkit-animation: rotateList 1s linear 1s 1 normal both; -moz-animation: rotateList 1s linear 1s 1 normal both; -ms-animation: rotateList 1s linear 1s 1 normal both; -o-animation: rotateList 1s linear 1s 1 normal both; animation: rotateList 1s linear 1s 1 normal both; }
+#box.anm1 ul { -webkit-animation: rotateList 10s cubic-bezier(0, 1, 0.75, 1.02) 0s 1 normal both; -moz-animation: rotateList 10s cubic-bezier(0, 1, 0.75, 1.02) 0s 1 normal both; -ms-animation: rotateList 10s cubic-bezier(0, 1, 0.75, 1.02) 0s 1 normal both; -o-animation: rotateList 10s cubic-bezier(0, 1, 0.75, 1.02) 0s 1 normal both; animation: rotateList 10s cubic-bezier(0, 1, 0.75, 1.02) 0s 1 normal both; }
+#box.anm2 ul { -webkit-animation: rotateList2 10s cubic-bezier(0, 1, 0.75, 1) 0s 1 normal both; -moz-animation: rotateList2 10s cubic-bezier(0, 1, 0.75, 1) 0s 1 normal both; -ms-animation: rotateList2 10s cubic-bezier(0, 1, 0.75, 1) 0s 1 normal both; -o-animation: rotateList2 10s cubic-bezier(0, 1, 0.75, 1) 0s 1 normal both; animation: rotateList2 10s cubic-bezier(0, 1, 0.75, 1) 0s 1 normal both; }
+#box.anm3 ul { -webkit-animation: rotateList 10s cubic-bezier(0, 1, 0.5, 1.04) 0s 1 normal both; -moz-animation: rotateList 10s cubic-bezier(0, 1, 0.5, 1.04) 0s 1 normal both; -ms-animation: rotateList 10s cubic-bezier(0, 1, 0.5, 1.04) 0s 1 normal both; -o-animation: rotateList 10s cubic-bezier(0, 1, 0.5, 1.04) 0s 1 normal both; animation: rotateList 10s cubic-bezier(0, 1, 0.5, 1.04) 0s 1 normal both; }
+#box.anm4 ul { -webkit-animation: rotateList 10s cubic-bezier(0, 1, 0.87, 1.1) 0s 1 normal both; -moz-animation: rotateList 10s cubic-bezier(0, 1, 0.87, 1.1) 0s 1 normal both; -ms-animation: rotateList 10s cubic-bezier(0, 1, 0.87, 1.1) 0s 1 normal both; -o-animation: rotateList 10s cubic-bezier(0, 1, 0.87, 1.1) 0s 1 normal both; animation: rotateList 10s cubic-bezier(0, 1, 0.87, 1.1) 0s 1 normal both; }
+#box #boxWrap ul li:first-child { -webkit-transition: all 0.4s cubic-bezier(1, 4, 0.6, 0.6); -moz-transition: all 0.4s cubic-bezier(1, 4, 0.6, 0.6); -ms-transition: all 0.4s cubic-bezier(1, 4, 0.6, 0.6); -o-transition: all 0.4s cubic-bezier(1, 4, 0.6, 0.6); transition: all 0.4s cubic-bezier(1, 4, 0.6, 0.6); }
+#box.finish #boxWrap ul li:first-child { color: #ff0000; background-color: #ffaa00; border-color: #ffcc88; -webkit-transform: scale(2) !important; }
+
+@-webkit-keyframes reverseList { from { width: 150%; -webkit-perspective: 466.66667; -webkit-transform: rotateX(3600deg); }
+  to { width: 100%; -webkit-perspective: 700; -webkit-transform: rotateX(4320deg); } }
+
+@-webkit-keyframes rotateList { from { -webkit-transform: rotateX(4320deg) scale(1.1); }
+  to { -webkit-transform: rotateX(0deg) scale(0.89); } }
+
+@-webkit-keyframes rotateList2 { 0% { -webkit-transform: rotateX(4320deg) scale(1); }
+  92% { -webkit-transform: rotateX(40deg) scale(0.89); -webkit-animation-timing-function: ease-in; -moz-animation-timing-function: ease-in; -ms-animation-timing-function: ease-in; -o-animation-timing-function: ease-in; animation-timing-function: ease-in; }
+  100% { -webkit-transform: rotateX(0deg) scale(0.89); } }
